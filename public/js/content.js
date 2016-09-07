@@ -19,12 +19,11 @@ function AposContactmail(token, contents){
 			}
 		});
 		
+
 		// Event to send the form
-		$('[data-send-contactmail]').on('click', function(event){
-			var $form = $('[data-send-contactmail]').closest('form');
-			if($form.length > 0){
-				var $form = $form[0];
-			}
+		$('[data-send-contactmail]').on('submit', function(event){
+			event.preventDefault();
+			var $form = this;
 			$.ajax({
 				  type: "POST"
 				, url: "/apos-contactmail/send"
@@ -49,10 +48,8 @@ function AposContactmail(token, contents){
 						$($form).html(contents.error || '<strong>Unknown error</strong>');
 					}
 				}
-			});			
-
+			});
 		});
 
-	});
-	
+	});	
 }
