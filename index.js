@@ -97,7 +97,8 @@ function Construct(options, callback) {
 		// sending mail ... 
 		var data = _.omit(req.body, 'message');
 		self.options.mailer.sendMail({
-			from: req.body.email || 'apostrophe-contactmail',
+			from: 'no-reply@studiowaaz.com',
+			replyTo: req.body.email || 'apostrophe-contactmail'
 			to: self.options.sendto,
 			subject: (self.options.subjectprefix || '')+ req.body.subject || '',
 			text: ''
