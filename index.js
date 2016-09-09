@@ -100,7 +100,7 @@ function Construct(options, callback) {
 			from: 'no-reply@studiowaaz.com',
 			replyTo: req.body.email || 'apostrophe-contactmail',
 			to: self.options.sendto,
-			subject: (self.options.subjectprefix || '')+ req.body.subject || '',
+			subject: (self.options.subjectprefix || '') || '',
 			text: ''
 				+ JSON.stringify(data) +'\n'
 				+ '----------------------\n'
