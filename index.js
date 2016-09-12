@@ -18,6 +18,17 @@ function generateToken(){
 	return token;
 }
 
+function editMail(data){
+	var msg = '';
+
+
+	// affiche 'nom du champs' =  'valeur'
+	for(field in data){
+		msg = msg+(field + " = " + data[field] + '\n');
+	}
+
+	return msg;
+}
 function Construct(options, callback) {
 	var apos = options.apos;
 	var app = options.app;
@@ -102,7 +113,7 @@ function Construct(options, callback) {
 			to: self.options.sendto,
 			subject: (self.options.subjectprefix || '') || '',
 			text: ''
-				+ JSON.stringify(data) +'\n'
+				+ editMail(data)
 				+ '----------------------\n'
 				+ req.body.message 
 		}, function(err, info){
